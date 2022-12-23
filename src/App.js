@@ -1,19 +1,36 @@
-import { useState } from 'react'
-import { TaskItem } from '../src/components/TaskItem.component'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
+import { TaskItem } from './components/TaskItem.component'
 
 const App = () => {
   let [tasks, setTasks] = useState([
     {
       id: '1',
-      description: 'Estudar ReactPro',
+      description: 'Study',
       inCompleted: false,
     },
     {
       id: '2',
-      description: 'Ler Sobre Javascript',
+      description: 'Read a Javascript Book',
       inCompleted: true,
     },
   ])
+
+  const fetchTasks = async () => {
+    try {
+      const { data } = await axios.get(
+        'https://fsc-task-manager-backend.herokuapp.com/tasks'
+      )
+      setTasks(data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    fetchTasks()
+  }, [])
 
   return (
     <>
