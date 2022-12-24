@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import './Tasks.scss'
 
 import { TaskItem } from './TaskItem.component'
+import { AddTask } from './AddTask'
 
 export const Tasks = () => {
   let [tasks, setTasks] = useState([])
@@ -29,6 +30,7 @@ export const Tasks = () => {
 
       <div className="last-tasks">
         <h3>Latest Tasks</h3>
+        <AddTask />
         <div className="tasks-list">
           {tasks
             .filter((task) => task.isCompleted === false)
