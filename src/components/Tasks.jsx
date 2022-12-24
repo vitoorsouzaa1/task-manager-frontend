@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useAlert } from 'react-alert'
 
 import './Tasks.scss'
 
@@ -8,6 +9,7 @@ import { AddTask } from './AddTask'
 
 export const Tasks = () => {
   let [tasks, setTasks] = useState([])
+  const alert = useAlert()
 
   const fetchTasks = async () => {
     try {
@@ -15,8 +17,8 @@ export const Tasks = () => {
         'https://fsc-task-manager-backend.herokuapp.com/tasks'
       )
       setTasks(data)
-    } catch (e) {
-      console.log(e)
+    } catch (_e) {
+      alert.error('Something went wrong trying to get tasks')
     }
   }
 
