@@ -6,6 +6,7 @@ export const CustomInput = ({ label, value, onChange }) => {
       <input
         type="text"
         className="custom-input"
+        value={value}
         onChange={(e) => onChange(e)}
       />
 
