@@ -32,7 +32,7 @@ export const AddTask = ({ fetchTasks }) => {
 
       setTask('')
     } catch (err) {
-      alert.error('Something goes wrong')
+      alert.error('Something went wrong')
     }
   }
 
