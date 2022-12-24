@@ -31,6 +31,8 @@ export const AddTask = ({ fetchTasks }) => {
       await fetchTasks()
 
       setTask('')
+
+      await alert.success('The task was add with success')
     } catch (err) {
       alert.error('Something went wrong')
     }
