@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert'
 import './TaskItem.scss'
 import { AiFillDelete } from 'react-icons/ai'
 
-export const TaskItem = async ({ task }) => {
+export const TaskItem = async ({ task, fetchTasks }) => {
   const alert = useAlert()
 
   const handleTaskDeletion = async () => {
@@ -12,6 +12,10 @@ export const TaskItem = async ({ task }) => {
       await axios.delete(
         `https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`
       )
+
+      await fetchTasks()
+
+      alert.success('The task was successfully deleted!')
     } catch (error) {
       alert.error('Something goes wrong')
     }
