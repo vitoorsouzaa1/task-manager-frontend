@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useCallback } from 'react'
 import { useAlert } from 'react-alert'
 
 import './Tasks.scss'
@@ -11,7 +11,7 @@ export const Tasks = () => {
   let [tasks, setTasks] = useState([])
   const alert = useAlert()
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       const { data } = await axios.get(
         'https://fsc-task-manager-backend.herokuapp.com/tasks'
@@ -20,7 +20,7 @@ export const Tasks = () => {
     } catch (_e) {
       alert.error('Something went wrong trying to get tasks')
     }
-  }
+  }, [alert])
 
   const lastTasks = useMemo(() => {
     return tasks.filter((task) => task.isCompleted === false)
@@ -32,7 +32,7 @@ export const Tasks = () => {
 
   useEffect(() => {
     fetchTasks()
-  })
+  }, [fetchTasks])
 
   return (
     <div className="tasks-container">
