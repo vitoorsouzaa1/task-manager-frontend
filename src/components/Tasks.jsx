@@ -8,7 +8,7 @@ import { TaskItem } from './TaskItem'
 import { AddTask } from './AddTask'
 
 export const Tasks = () => {
-  let [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState([])
   const alert = useAlert()
 
   const fetchTasks = useCallback(async () => {
