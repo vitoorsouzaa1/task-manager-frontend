@@ -40,7 +40,12 @@ export const AddTask = ({ fetchTasks }) => {
 
   return (
     <div className="add-task-container">
-      <CustomInput label="Add Task" value={task} onChange={handleOnChange} />
+      <CustomInput
+        label="Add Task"
+        value={task}
+        onChange={handleOnChange}
+        onEnterPress={handleTaskAddition}
+      />
       <CustomButton onClick={handleTaskAddition}>
         <FaPlus size={14} color="#fff" />
       </CustomButton>
