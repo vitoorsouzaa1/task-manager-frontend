@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-import './tasks.scss'
+import './Tasks.scss'
 
 import { TaskItem } from './TaskItem.component'
 
