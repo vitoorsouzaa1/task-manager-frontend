@@ -16,7 +16,7 @@ export const TaskItem = async ({ task, fetchTasks }) => {
       await fetchTasks()
 
       alert.success('The task was successfully deleted!')
-    } catch (error) {
+    } catch (_e) {
       alert.error('Something went wrong')
     }
   }
