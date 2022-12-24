@@ -1,7 +1,22 @@
+import axios from 'axios'
+import { useAlert } from 'react-alert'
+
 import './TaskItem.scss'
 import { AiFillDelete } from 'react-icons/ai'
 
-export const TaskItem = ({ task }) => {
+export const TaskItem = async ({ task }) => {
+  const alert = useAlert()
+
+  const handleTaskDeletion = async () => {
+    try {
+      await axios.delete(
+        `https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`
+      )
+    } catch (error) {
+      alert.error('Something goes wrong')
+    }
+  }
+
   return (
     <>
       <div className="task-item-container">
@@ -21,8 +36,12 @@ export const TaskItem = ({ task }) => {
           </label>
         </div>
 
-        <div className="delete">
-          <AiFillDelete size={18} color="#F97474" />
+        <div className="delete" onClick={handleTaskDeletion}>
+          <AiFillDelete
+            size={18}
+            color="#F97474"
+            onClick={handleTaskDeletion}
+          />
         </div>
       </div>
     </>
