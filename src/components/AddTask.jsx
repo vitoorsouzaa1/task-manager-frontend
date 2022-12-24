@@ -8,13 +8,13 @@ import { CustomInput } from './CustomInput'
 import './AddTask.scss'
 import { CustomButton } from './CustomButton'
 
-export const AddTask = () => {
+export const AddTask = ({ fetchTasks }) => {
   const [task, setTask] = useState('')
 
   const alert = useAlert()
 
   const handleOnChange = (e) => {
-    setTask(e.tagert.value)
+    setTask(e.target.value)
   }
 
   const handleTaskAddition = async () => {
@@ -27,7 +27,13 @@ export const AddTask = () => {
         description: task,
         isCompleted: false,
       })
-    } catch (err) {}
+
+      await fetchTasks()
+
+      setTask('')
+    } catch (err) {
+      alert.error('Something goes wrong')
+    }
   }
 
   return (

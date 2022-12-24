@@ -30,7 +30,7 @@ export const Tasks = () => {
 
       <div className="last-tasks">
         <h3>Latest Tasks</h3>
-        <AddTask />
+        <AddTask fetchTasks={fetchTasks} />
         <div className="tasks-list">
           {tasks
             .filter((task) => task.isCompleted === false)
