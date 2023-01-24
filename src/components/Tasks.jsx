@@ -14,7 +14,7 @@ export const Tasks = () => {
   const fetchTasks = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        'https://fsc-task-manager-api.up.railway.app/tasks'
+        'https://fsc-task-manager-backend.herokuapp.com'
       )
       setTasks(data)
     } catch (_e) {
